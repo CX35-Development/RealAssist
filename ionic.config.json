@@ -1,0 +1,7 @@
+{
+  "name": "RIA",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
