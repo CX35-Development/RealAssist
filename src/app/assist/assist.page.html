@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="light"> 
+    <ion-button slot="start"  expand="block"  size="small" strong="true" color="danger" (click)="service.goToMap();">
+      MAP
+    </ion-button>
+    <ion-img  class="logo" src="../../assets/ralogonotxt.png" ></ion-img>    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-row>
+  <ion-col style="text-align:center">
+    <ion-text style="font-size:25px">Assistance Requests</ion-text>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col style="text-align:center">
+    <ion-button    expand="block"  size="small" strong="true" color="danger"(click)="service.createRequest()" >Create Request</ion-button>
+  </ion-col>
+</ion-row>
+<ion-item lines="full">
+  <ion-label>Sort By:</ion-label>
+  <ion-select slot="end" style="width:100%">
+    <ion-select-option>Distance(Closest)</ion-select-option> 
+  </ion-select>
+</ion-item>
+<ion-row>
+  <ion-col>
+    <ion-row ion-button class="request" *ngFor="let requests of asssistanceRequested; let i = index" (click)="service.viewMoreDetails(i,null)">
+      <ion-col size="10">
+        <ion-img class="propertyPic" src="{{requests.get('atProperty').get('image')?.url()}}"></ion-img>
+        </ion-col>
+        <ion-col size="2" class="starPosition" *ngIf="assignedJob[i]">
+          <ion-icon name="star" color="warning" size="large"></ion-icon>
+        </ion-col> 
+        <ion-col >
+
+          <ion-row style="justify-content:left">
+          <ion-text>Agent: {{requests.get('agent').get('fullName')}}<br>
+          Address: {{requests.get('atProperty').get('address').slice(0,52)}}<br><br>
+          </ion-text> 
+          </ion-row>
+
+          <ion-row style="justify-content:left">
+          <ion-text>Date: {{showingDate[i].toString().slice(0,16)}}<br> 
+          <strong>Times</strong> <br>
+          From: {{startTime[i].getHours() > 12 ? startTime[i].getHours()-12 : startTime[i].getHours() }}:{{startTime[i].getMinutes() < 10 ? '0'+startTime[i].getMinutes() : startTime[i].getMinutes()}} {{startTime[i].getHours() > 12 ? 'pm' : 'am'}}<br>
+          To: {{endTime[i].getHours() > 12 ? endTime[i].getHours()-12 : endTime[i].getHours() }}:{{endTime[i].getMinutes() < 10 ? '0'+endTime[i].getMinutes() : endTime[i].getMinutes()}} {{endTime[i].getHours() > 12 ? 'pm' : 'am'}}</ion-text>
+          </ion-row> 
+
+        <ion-row style="justify-content:left">  
+         <ion-text> <strong>Compensation: ${{requests.get('compensation')}}</strong></ion-text>
+        </ion-row>
+        </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+</ion-content>  
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-tab-bar   color="light"> 
+    <ion-tab-button  (click)="service.navigateTo('assist')"> 
+      <ion-icon color="danger" size="large" src="../../assets/icons/assist.svg"></ion-icon> 
+      <ion-label color="dark" style="font-size: 12px;">Assist</ion-label>
+    </ion-tab-button> 
+    <ion-tab-button  (click)="service.navigateTo('agents')"> 
+      <ion-icon color="danger" size="large" src="../../assets/icons/agents.svg"></ion-icon> 
+      <ion-label color="dark" style="font-size: 12px;">Agents</ion-label>
+    </ion-tab-button> 
+    <ion-tab-button  (click)="service.navigateTo('account')"> 
+      <ion-icon color="danger" size="large"  name="key"></ion-icon>
+      <ion-label color="dark" style="font-size: 12px;">Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+  </ion-toolbar>
+</ion-footer>

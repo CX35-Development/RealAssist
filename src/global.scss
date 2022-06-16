@@ -24,3 +24,85 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+@font-face {
+    font-family: 'ExoReg';
+    src: url('assets/fonts/Exo2-Regular.ttf');
+}
+
+ion-spinner {
+    transform: scale(2);
+} 
+
+::-webkit-scrollbar {
+    display: none !important;
+}
+
+ion-title {
+    font-family: 'ExoReg';
+}
+
+ion-content {
+    font-family: 'ExoReg';
+}
+
+ion-text {
+    font-family: 'ExoReg';
+}
+
+ion-label {
+    font-family: 'ExoReg' !important;
+    padding-bottom: 5px;
+}
+
+ion-item {
+    font-family: 'ExoReg' !important;
+}
+
+ion-textarea {
+    font-family: 'ExoReg' !important;
+}
+ion-tab-bar {
+    --border: none;
+}
+ion-input{
+    --background: #f3f3f3 !important;
+}
+
+ion-select{
+    background: #f3f3f3 !important;
+}
+
+
+.logo {
+    height: 50px;
+    width: 100%;
+}
+
+ion-row {
+    font-family: 'ExoReg';
+    justify-content: center;
+}
+
+ion-col {
+    text-align: center;
+    font-family: 'ExoReg';
+}
+
+ion-button {
+    font-family: 'ExoReg';
+}
+
+.toastAlert{
+  --background: #000000;
+  color: white;
+  width: 100%;
+  text-align: center;
+
+}
+
+.actionSheet{
+    --background-opacity: #00000095;
+    font-size: 20px;
+}

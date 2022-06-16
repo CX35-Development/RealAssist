@@ -1,0 +1,26 @@
+.propertyPic{
+    height: 150px;
+    width: 100%;
+} 
+
+.request{
+    border-bottom: 2px solid lightgrey;
+}
+ 
+
+ion-col{ 
+    text-align: left;
+}
+
+.starPosition{
+    position: absolute;
+    right: 0px;
+}
+
+ion-button{  
+    background-color: #C4171D;
+    border-radius: 5px; 
+-webkit-box-shadow: 0px 6px 0px rgb(165, 20, 25), 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(184, 24, 24, 0.3), inset 0px 0px 3px rgba(189, 40, 40, 0.5);
+-moz-box-shadow: 0px 6px 0px rgb(165, 20, 25), 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(204, 44, 44, 0.3), inset 0px 0px 3px rgba(170, 40, 40, 0.5);
+box-shadow: 0px 6px 0px rgb(179, 21, 27), 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(185, 16, 16, 0.3), inset 0px 0px 3px rgba(209, 47, 47, 0.5);
+}

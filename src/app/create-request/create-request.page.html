@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/assist" (click)="clearData()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create Request</ion-title>
+  </ion-toolbar>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-text>Please fill out all the information</ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="11">
+      <ion-item lines="none">
+        <ion-label position="stacked">MLS (If known)</ion-label>
+        <ion-input type="text" [(ngModel)]="homeMLS"></ion-input>
+      </ion-item> 
+      <ion-row> 
+        <ion-col size="12" style="border:1px solid lightgrey; margin-top:10px; border-radius:5px">
+          <ion-text>Date & Times</ion-text>
+      <ion-item lines="none">
+        <ion-label position="stacked">Date</ion-label>
+        <ion-datetime presentation="date" [(ngModel)]="showingDateTime" mode="ios"></ion-datetime>
+      </ion-item>
+       <ion-item lines="none">
+        <ion-label position="stacked">From</ion-label> 
+        <ion-datetime presentation="time"  minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" [(ngModel)]="startTime" mode="md"> </ion-datetime> 
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">To</ion-label> 
+        <ion-datetime presentation="time"  minuteValues="0,5,10,15,20,25,30,35,40,45,50,55" [(ngModel)]="endTime" mode="md"></ion-datetime> 
+      </ion-item>
+      <!--ion-item lines="none">
+        <ion-label position="stacked">From</ion-label>
+         <ion-datetime displayFormat="hh:mm a" [(ngModel)]="startTime" minuteValues="0,10,20,30,40,50" mode="ios"></ion-datetime>
+        <ion-label position="stacked">To</ion-label>
+         <ion-datetime displayFormat="hh:mm a" [(ngModel)]="endTime" minuteValues="0,10,20,30,40,50" mode="ios"></ion-datetime>
+      </ion-item-->
+        </ion-col>
+      </ion-row>
+     
+       <!--ion-item lines="none">
+        <ion-label position="stacked">Property Address</ion-label>
+        <!--ion-textarea type="text" rows="4" [(ngModel)]="propAddress" (ionBlur)="enteredAddress()"></ion-textarea>
+        <div class="geocoder" id="geocoder" type="text"></div>
+      </ion-item-->
+     <ion-row>
+       <ion-col size="6">
+         <ion-img src="{{image == undefined ? '../../assets/reqHousePic.png' : image?.url()}}"></ion-img>
+       </ion-col>
+     </ion-row>
+     <ion-row>
+
+       <ion-col size="11">
+        <ion-button type="file" expand="block" color="tertiary" strong="true" size="small" (click)="initPicUpload()">Upload Picture(Optional)
+                 <input id="input" type="file" accept="image/*" (change)="picChange($event)" />
+        </ion-button>
+        </ion-col>
+     </ion-row> 
+      <div class="houseLocationDiv" id="propLoc"></div>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">CBS Code</ion-label>
+        <ion-input type="number" [(ngModel)]="cbsCode"></ion-input>
+      </ion-item>
+      <ion-item lines="none" disabled="true" >
+        <ion-label position="stacked">Pay</ion-label>
+        <ion-input type="number"  >${{pay}}</ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="stacked">Comments</ion-label>
+        <ion-textarea type="text" rows="4" placeholder="Any special instructions" [(ngModel)]="comments"></ion-textarea>
+      </ion-item>
+      <br> 
+      <ion-button expand="block" size="small" (click)="verifyData()" color="danger">Submit</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

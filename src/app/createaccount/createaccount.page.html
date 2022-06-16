@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-back-button slot="start" color="dark"></ion-back-button> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="none">
+
+  <ion-row>
+    <ion-col size="11" class="infoCol">
+      <ion-text>Please enter your information<br><br></ion-text> 
+        <ion-row >
+          <ion-col> 
+            <ion-img class="thumbnail" src="{{!picture ? '../../assets/user.png' : picture?.url()}}"></ion-img> 
+          <ion-button type="file" expand="block" color="tertiary" strong="true" size="small" (click)="picBtnClick()">{{!picture ? 'Upload Picture' : 'Change Picture'}}
+                 <input id="input" type="file" accept="image/*" (change)="picChange($event)" />
+             </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-item lines="none">
+          <ion-label position="stacked">Full Name</ion-label>
+          <ion-input type="text" autocapitalize="words" [(ngModel)]="fullName"></ion-input>
+        </ion-item> 
+        <ion-item lines="none">
+          <ion-label position="stacked">Phone Number</ion-label>
+          <ion-input type="tel" [(ngModel)]="phone"></ion-input>
+        </ion-item>  
+        <ion-item lines="none">
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item> 
+        <ion-item lines="none">
+          <ion-label position="stacked">License Number</ion-label>
+          <ion-input type="number" [(ngModel)]="license"></ion-input>
+        </ion-item >
+        <ion-item lines="none">
+          <ion-label position="stacked">Firm Affiliation</ion-label>
+          <ion-select #O interface="action-sheet" (ionChange)="officeSelection(O.value)">
+            <ion-select-option *ngFor="let firm of firms" value="{{firm.id}}">{{firm.get('name')}}</ion-select-option>
+          </ion-select>
+        </ion-item>  
+        <ion-item lines="none">
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password1"></ion-input>
+        </ion-item> 
+        <ion-item lines="none">
+          <ion-label position="stacked">Repeat Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password2"></ion-input>
+        </ion-item> <br>
+    <ion-button expand="full" color="danger"  (click)="verifyInformationAndCreate()">Submit</ion-button> 
+    </ion-col>
+  </ion-row> 
+
+</ion-content>

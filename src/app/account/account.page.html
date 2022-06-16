@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-img   class="logo" src="../../assets/ralogonotxt.png" ></ion-img> 
+  </ion-toolbar>
+</ion-header> 
+<ion-content>
+
+<ion-row class="topBannerRed" *ngIf="!readyToAssist">
+  <ion-col size="11">
+    <ion-text style="font-size:13px;">You are currently not available to help Agents. If you are ready to assist, please mark yourself as available.</ion-text>
+  </ion-col> 
+</ion-row>
+<ion-row class="topBannerGreen" *ngIf="readyToAssist">
+  <ion-col size="11">
+    <ion-text style="font-size:17px;">You are Marked as "Ready To Assist". Please keep the App open to allow for prompt job assignment responses.</ion-text>
+  </ion-col> 
+</ion-row>
+<ion-row >
+   
+  <ion-col size="11">
+    <ion-row  button (click)="beginStopAssisting()">
+      <ion-col>
+    <ion-label>Mark Available</ion-label>
+      </ion-col>
+      <ion-col>
+    <ion-toggle color="success" checked="{{readyToAssist}}" disabled="true"></ion-toggle>
+      </ion-col>
+    </ion-row>
+    <ion-item  *ngIf="readyToAssist" >
+      <ion-label  >Max Travel Radius</ion-label>
+      <ion-select #T interface="popover" value="15" (ionChange)="service.setTravelRadius(T.value)" mode="ios">
+        <ion-select-option value="5">5 Miles</ion-select-option>
+        <ion-select-option value="10">10 Miles</ion-select-option>
+        <ion-select-option value="15">15 Miles</ion-select-option>
+        <ion-select-option value="20">20 Miles</ion-select-option>
+        <ion-select-option value="25">25 Miles</ion-select-option>
+        <ion-select-option value="30">30 Miles</ion-select-option>
+        <ion-select-option value="35">35 Miles</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+  <ion-col size="8">
+    <ion-img class="headshot" src="{{picture?.url()}}">   </ion-img>
+    <ion-spinner name="dots" color="dark" class="loadingPic" *ngIf="uploadingImg"></ion-spinner>
+
+    <ion-button color="tertiary" expand="block"  shape="round" size="small" (click)="initUpload()" disabled="{{!isEditing}}">Update</ion-button>
+    <input id="input" type="file" accept="image/*" (change)="picChange($event)" />
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col class="infoCol" size="12">
+    <ion-row>
+      <ion-col size="5">
+    <ion-item lines="full" disabled="{{!isEditing}}">
+      <ion-label position="stacked">Full Name</ion-label>
+      <ion-input  type="text" [(ngModel)]="fullName"></ion-input>
+    </ion-item>
+    <ion-item lines="full" disabled="{{!isEditing}}">
+      <ion-label position="stacked">Phone Number</ion-label>
+      <ion-input   type="tel" [(ngModel)]="phone"></ion-input>
+    </ion-item>
+    <ion-item lines="full" disabled="{{!isEditing}}">
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input  type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+      </ion-col>
+      <ion-col>
+    <ion-item lines="full"  disabled="true">
+      <ion-label position="stacked">Firm Affiliation</ion-label>
+      <ion-input   value="{{firmAffiliation}}"></ion-input> 
+    </ion-item>
+    <ion-item lines="full" disabled="true">
+      <ion-label position="stacked">License Number</ion-label>
+      <ion-input  type="text" [(ngModel)]="realtorLicense"></ion-input>
+    </ion-item>
+      </ion-col>
+    </ion-row>
+     <ion-item lines="none">
+        <ion-button slot="end" (click)="editInfo()" *ngIf="!isEditing">Edit</ion-button>
+        <ion-button slot="end" color="primary" (click)="editInfo()" *ngIf="isEditing">Cancel</ion-button>
+        <ion-button slot="end" color="danger" (click)="updateInfo()" *ngIf="isEditing">Save</ion-button>
+      </ion-item>
+  </ion-col>
+
+</ion-row>
+
+<ion-row>
+  <ion-col>
+    <ion-item class="moreBtns" style="border-top: 2px solid #f0f0f0;" lines="none" mode="ios" (click)="showAssignedRequests()">
+    <ion-title>Assigned Requests</ion-title> 
+    </ion-item> 
+    <ion-item class="moreBtns" lines="none" mode="ios" (click)="showHistory()">
+    <ion-title>Open Requests</ion-title> 
+    </ion-item>  
+    <ion-item class="moreBtns" lines="none" mode="ios" (click)="showHistory()">
+    <ion-title>Past Requests</ion-title> 
+    </ion-item> 
+     <ion-item class="moreBtns"  lines="none" mode="ios" (click)="showHistory()">
+    <ion-title>Assitance History</ion-title> 
+    </ion-item> 
+  </ion-col>
+</ion-row>
+
+<ion-row class="mainFooter">
+  <ion-col size="11">
+    <ion-text style="font-size:10px; padding-right:40px;"><a>Terms & Conditions </a> </ion-text>  
+       <ion-text style="font-size:10px"> <a>Privacy Policy <br><br></a></ion-text>  
+    <ion-button color="light" size="small" expand="block" shape="round" (click)="service.logOut()">Log Out</ion-button>
+  </ion-col>
+</ion-row>
+
+<div id="history" class="assistanceHistDiv">
+  <ion-row>
+    <ion-col size="1">
+      <ion-icon name="close" size="large" color="dark" (click)="showHistory()"></ion-icon>
+    </ion-col>
+    <ion-col size="10">
+      <ion-text>Historical Transactions</ion-text>
+    </ion-col>
+  </ion-row>
+</div>
+<div id="assigned" class="assistanceHistDiv">
+  <ion-row>
+    <ion-col size="1">
+      <ion-icon name="close" size="large" color="dark" (click)="showAssignedRequests()"></ion-icon>
+    </ion-col>
+    <ion-col size="10">
+      <ion-text>Assigned Requests</ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+      <ion-text><strong>All Property Information</strong></ion-text>
+  </ion-row>
+  <ion-row *ngFor="let request of assignedRequest; let i = index">
+    <ion-col size="2">
+      <ion-thumbnail>
+      <ion-img src="{{request.get('atProperty').get('image').url()}}"></ion-img>
+      </ion-thumbnail>
+    </ion-col>
+    <ion-col>
+    </ion-col>
+  </ion-row>
+</div>  
+
+</ion-content>  
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-tab-bar   color="light"> 
+    <ion-tab-button  (click)="service.navigateTo('assist')"> 
+      <ion-icon color="danger" size="large" src="../../assets/icons/assist.svg"></ion-icon> 
+      <ion-label color="dark" style="font-size: 12px;">Assist</ion-label>
+    </ion-tab-button> 
+    <ion-tab-button  (click)="service.navigateTo('agents')"> 
+      <ion-icon color="danger" size="large" src="../../assets/icons/agents.svg"></ion-icon> 
+      <ion-label color="dark" style="font-size: 12px;">Agents</ion-label>
+    </ion-tab-button> 
+    <ion-tab-button  (click)="service.navigateTo('account')"> 
+      <ion-icon color="danger" size="large"  name="key"></ion-icon>
+      <ion-label color="dark" style="font-size: 12px;">Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+  </ion-toolbar>
+</ion-footer>

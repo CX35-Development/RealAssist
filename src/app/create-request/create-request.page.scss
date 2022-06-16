@@ -1,0 +1,42 @@
+ion-input{
+    --background: #f0f0f0;
+}
+ion-datetime{
+    background: #f0f0f0; 
+}
+ion-textarea{
+    background: #f0f0f0;
+}
+ion-label{
+    padding-bottom: 10px !important;
+}
+ion-row{
+    justify-content: center
+}
+
+input{
+    display: none;
+}
+ 
+
+.houseLocationDiv{
+    height:400px;
+    width: 100%;
+    margin: auto;
+    margin-top:30px;
+    border-radius: 5px;
+}
+  
+.mapboxgl-ctrl-geocoder {
+    width: 1000px!important; 
+}
+.geocoder{
+    width:100%; 
+    margin-top:10px;
+}
+.geocoderRow{ 
+    width: 100%;
+    justify-content: center !important;
+    z-index: 999;
+    text-align:center;
+}

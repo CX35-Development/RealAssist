@@ -1,0 +1,36 @@
+.logoCol{
+    background: #014b85;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.logo{
+    min-height:175px;
+    max-height: 250px;
+    width: 100%;
+}
+
+.loginCol{
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.850);
+    box-shadow: 0px 5px 5px 1px black;
+    text-align: center;
+    padding: 20px;
+}
+
+.titleCol{
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.850);
+    box-shadow: 0px 10px 15px 1px black;
+    text-align: center;
+    margin-top: 20px; 
+    padding: 20px;
+}
+
+
+ion-content{
+  background: url('../../assets/loginImg.png');
+  justify-content: center; 
+  background-size: cover;
+  background-position: 35% 50%;   
+}

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-img slot="start" class="logo" src="../../assets/ralogonotxt.png" ></ion-img> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-row> 
+  <ion-col size="3">
+  <ion-img class="tregLogo" src="../../assets/TREG.png"></ion-img>
+  </ion-col>
+  <ion-col size="6" style="text-align: center"> 
+    <ion-text>Agents at <br> <ion-text style="font-size:20px">The Real Estate Group</ion-text></ion-text>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+ 
+  <ion-col size="12" >
+    <ion-row class="agentRow" *ngFor="let agent of allFirmAgents">
+      <ion-col size="4">
+        <ion-img src="{{agent.get('picture')?.url()}}"></ion-img>
+      </ion-col>
+      <ion-col>
+        <ion-text>{{agent.get('fullName')}}<br>
+        License: #{{agent.get('realtorLicenseNum')}}<br>
+        Email: <a>{{agent.get('email')}}</a><br>
+        Phone: <a>{{agent.get('phoneNumber')}}</a></ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-col> 
+</ion-row>
+</ion-content>  
+<ion-footer class="ion-no-border">
+   <ion-toolbar>
+    <ion-tab-bar   color="light"> 
+    <ion-tab-button  (click)="service.navigateTo('assist')"> 
+      <ion-icon color="danger" size="large" src="../../assets/icons/assist.svg"></ion-icon> 
+      <ion-label color="dark" style="font-size: 12px;">Assist</ion-label>
+    </ion-tab-button> 
+    <ion-tab-button  (click)="service.navigateTo('agents')"> 
+      <ion-icon color="danger" size="large" src="../../assets/icons/agents.svg"></ion-icon> 
+      <ion-label color="dark" style="font-size: 12px;">Agents</ion-label>
+    </ion-tab-button> 
+    <ion-tab-button  (click)="service.navigateTo('account')"> 
+      <ion-icon color="danger" size="large"  name="key"></ion-icon>
+      <ion-label color="dark" style="font-size: 12px;">Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+  </ion-toolbar>
+</ion-footer>

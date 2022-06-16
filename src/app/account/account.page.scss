@@ -1,0 +1,57 @@
+.infoCol{ 
+    text-align: left; 
+}
+
+.topBannerRed{
+    background: #f04141;
+    color:white;
+}
+.topBannerGreen{
+    background: rgb(72, 196, 23);
+    color:white;
+}
+ 
+
+input{display: none;}
+
+.loadingPic{
+    z-index: 10;
+}
+.headshot{
+    width: 100%;
+    height: 200px;
+} 
+.mainFooter{
+    height:80px;
+}
+.mainFooter ion-col{ 
+    height: 20px;  
+    margin: auto;
+    vertical-align: bottom;
+    justify-content: center; 
+    width: 100%; 
+} 
+
+.assistanceHistDiv{
+    height: 0px;
+    width:370px;
+    background: white;
+    box-shadow: 5px 10px 15px 5px lightgrey;
+    display: block; 
+    opacity: 0;
+    margin: auto;
+    border-radius: 15px;
+    position: absolute;
+    top: 100px;
+    z-index: -10;
+    right: 10px;
+}
+
+.moreBtns{
+   border-bottom: 2px solid #f0f0f0; 
+}
+
+ion-toggle{
+    opacity: 1;
+}
+ 

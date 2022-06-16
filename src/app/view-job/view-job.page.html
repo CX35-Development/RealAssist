@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="light">
+   
+      <ion-icon name="close" color="danger"  slot="start" size="large" (click)="closeModal()"></ion-icon>
+ 
+    <ion-title> </ion-title>
+  </ion-toolbar>
+</ion-header>  
+<ion-content>
+ 
+ <ion-row class="mainRow">
+   <ion-col size="11">
+     <ion-slides style="height:400px;"> 
+       <ion-slide>
+         <ion-img src="{{picture}}"></ion-img> 
+       </ion-slide>
+     </ion-slides>
+     <ion-text><strong>Agent: </strong>{{agent}}<br></ion-text>
+     <ion-text><strong>Address: </strong><br>{{address.slice(0,20)}}<br>
+     {{address.slice(22,52)}}<br></ion-text> 
+     <ion-text><strong>Times</strong> <br>
+          From: {{startTime.getHours() > 12 ? startTime.getHours()-12 : startTime.getHours() }}:{{startTime.getMinutes() < 10 ? '0'+startTime.getMinutes() : startTime.getMinutes()}} {{startTime.getHours() > 12 ? 'pm' : 'am'}}<br>
+          To: {{endTime.getHours() > 12 ? endTime.getHours()-12 : endTime.getHours() }}:{{endTime.getMinutes() < 10 ? '0'+endTime.getMinutes() : endTime.getMinutes()}} {{endTime.getHours() > 12 ? 'pm' : 'am'}} <br>
+      </ion-text>
+     <ion-text><strong>Compensation: </strong>${{request.get('compensation')}}<br><br><br></ion-text> 
+ 
+ 
+          <ion-button *ngIf="!assitingAgent" color="danger" expand="block" (click)="assistWithRequest()">Assist this Agent</ion-button>
+ 
+   </ion-col>  
+   
+ </ion-row>
+
+</ion-content>
+    
+ <ion-row *ngIf="assitingAgent">
+   <ion-col size="11" class="banner">
+     <ion-text><strong>You are the Assisting Agent on this Property</strong></ion-text>
+   </ion-col> 
+ </ion-row>

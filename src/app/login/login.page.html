@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="light"> 
+    <ion-title> Welcome!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="none">
+
+<ion-row>
+   <ion-col class="titleCol" size="10">  
+     <ion-img class="logo" src="../../assets/ralogo.png"></ion-img>
+     <ion-text style="font-size: 15px">Lending a hand to your fellow Real Estate Agent<br><br></ion-text> 
+    
+     <ion-row> 
+       <ion-col>
+     <ion-item lines="none">
+       <ion-label position="stacked">Email</ion-label>
+       <ion-input type="email" [(ngModel)]="email"></ion-input>
+     </ion-item>
+     <ion-item lines="none">
+       <ion-label position="stacked">Password</ion-label>
+       <ion-input type="password" [(ngModel)]="password"></ion-input>
+     </ion-item>
+       </ion-col>
+     </ion-row>
+     
+     <ion-button expand="block" strong="true" (click)="login()" color="danger">Log In</ion-button> 
+    <ion-button expand="block"  color="danger" (click)="service.createAccount()">Create an Account</ion-button>
+    <br> 
+    <ion-button fill="clear" color="primary" (click)="service.forgotPassword()" size="small">Forgot Password?</ion-button>
+   </ion-col>
+ </ion-row> 
+</ion-content>
